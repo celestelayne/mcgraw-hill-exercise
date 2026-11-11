@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# McGraw Hill Exercise
 
-## Getting Started
+## Overview
+This project is an instructor-facing content management application for creating, reviewing, publishing, and assigning educational assessments.
 
-First, run the development server:
+## Users and Roles
+This project supports two primary roles:
+1. Content Editor: manages educational content and its publication lifecycle.
+2. Instructor: selects published assessments, assigns them to courses, and monitors completion.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Core Content Model
+Titles, Chapters, Quizzes, Questions,
+Versions, Courses, and Assignments.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Core Workflows
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Workflow | User Goal |
+| :--- | :--- |
+| WF-001 — Browse and Inspect | Find and understand existing educational content |
+| WF-002 — Edit a Quiz | Modify draft quiz content and save changes |
+| WF-003 — Publish Content | Review and publish an approved quiz version |
+| WF-004 — Assign and Track | Assign published quizzes to courses and monitor completion |
+| WF-005 — Handle Failures | Recover from failed operations and conflicting changes |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Product Rules
+1. What can an editor change in a quiz? Quiz metadata and multiple choice questions
+2. Who approves publications? An authorized Content Editor can submit and publish
+3. How much student activity should instructors track? Seeded completion records and summary metrics.
 
-## Learn More
+## Technology Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Area | Technology |
+| :--- | :--- |
+| Application | Next.js App Router, TypeScript |
+| Styling | CSS Modules |
+| API | GraphQL Yoga |
+| GraphQL client | Apollo Client |
+| Database | SQLite + Prisma |
+| Validation | Zod |
+| Unit/component testing | Vitest + React Testing Library |
+| E2E testing | Playwright |
+| Development workflow | AGENTS.md, ADRs, OpenSpec, coding agents |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Non-Goals
+Features deliberately excluded: student-facing application, payments, notifications, real-time collaboration, rich-text authoring, media uploads, advanced grading, and a production-grade analytics dashboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Development Approach
+AI-native, spec-driven, domain-oriented,
+vertical-slice implementation.
